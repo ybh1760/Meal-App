@@ -18,3 +18,5 @@
     3. navigation.goBack() : stack의 이전 값으로 이동한다. 다른 navigator에서도 사용가능하다
     4. navigation.pop() : stack의 이전 값으로 이동한다. stacknavigator에서만 사용 가능하다.
     5. navigation.replace("~~~~~~") : stack의 위에 쌓는 것이 아니라 route자체를 replace하여준다.
+- navigation의 header 변경하는 법
+    1. 화면에 렌더링 되고 있는 컴포넌트의 props에 navigationOptions의 headerTitle, headerStyle, headerTintColor 등을 변경함으로서 header를 변경할 수 있다.
