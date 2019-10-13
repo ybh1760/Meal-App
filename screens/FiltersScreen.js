@@ -4,7 +4,7 @@ import { StyleSheet, Text, View } from "react-native";
 const FiltersScreen = props => {
   return (
     <View style={styles.screen}>
-      <Text>Open up App.js to start working on your app!</Text>
+      <Text>FiltersScreen</Text>
     </View>
   );
 };

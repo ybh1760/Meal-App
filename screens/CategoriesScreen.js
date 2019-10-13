@@ -4,7 +4,7 @@ import { StyleSheet, Text, View } from "react-native";
 const CategoriesScreen = props => {
   return (
     <View style={styles.screen}>
-      <Text>Open up App.js to start working on your app!</Text>
+      <Text>CategoriesScreen</Text>
     </View>
   );
 };
