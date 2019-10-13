@@ -20,3 +20,4 @@
     5. navigation.replace("~~~~~~") : stack의 위에 쌓는 것이 아니라 route자체를 replace하여준다.
 - navigation의 header 변경하는 법
     1. 화면에 렌더링 되고 있는 컴포넌트의 props에 navigationOptions의 headerTitle, headerStyle, headerTintColor 등을 변경함으로서 header를 변경할 수 있다.
+    2. navigationOptions에 함수를 넘겨줄 경우 인자로 navigationData가 넘어온다. navigationData는 컴포넌트 내에서 사용 되는 navigation객체를 갖고 있기 때문에 이전 스크린으로 부터 전달 받은 params를 동적으로 사용할 수 있다.
