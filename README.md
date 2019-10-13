@@ -2,10 +2,19 @@
 
 ## React-navigation 시작하기 
 
-- stack navigator 사용하기
-    1. createStackNavigator({}) 를 통해  react-component를 생성한다.
-    2. createAppNavigator() 를 통해 creatStackNavigator로 생성된 react-component를 인자로 받아 react-component를 생성한다.
-    3. 항상 stackNavigator를 생성 후 appNavigator의 인자로 넘겨 받아 component를 생성하여 사용해야한다.
-    4. createStackNavigator의 인자로 routeName과 routeName을 통해 이동할 react-component를 주어야 한다.
-    5. createStackNavigator를 통해 component를 생성 할 때  인자로 넘겨 줬던 react-component의 props에 navigation객체가 넘겨진다.
-    6. props로 전달된 navigation 객체의 navigate메소드를 사용하여 컴포넌트 별로 이동할수 있게된다.
+### stack navigator 사용하기
+
+1. createStackNavigator({}) 를 통해  react-component를 생성한다.
+2. createAppNavigator() 를 통해 creatStackNavigator로 생성된 react-component를 인자로 받아 react-component를 생성한다.
+3. 항상 stackNavigator를 생성 후 appNavigator의 인자로 넘겨 받아 component를 생성하여 사용해야한다.
+4. createStackNavigator의 인자로 routeName과 routeName을 통해 이동할 react-component를 주어야 한다.
+5. createStackNavigator를 통해 component를 생성 할 때  인자로 넘겨 줬던 react-component의 props에 navigation객체가 넘겨진다.
+6. props로 전달된 navigation 객체의 navigate메소드를 사용하여 컴포넌트 별로 이동할수 있게된다.
+
+- navigation 을 통해 screen을 이동하는 메소드   
+    1. navigation.navigate({routeName : "~~~~~"}) : stacknavigator의 routeName이 ~~~~~로 지정된 컴포넌트를 stack에 쌓고 stack의 topmost를 렌더링한다.
+    2. navigation.push("~~~~~") : stacknavigator의 routeName이 ~~~~~로 지정된 컴포넌트를 stack에 쌓고 stack의 topmost를 렌더링한다.
+                                  navigate와의 차이점은 push는 자기자신도 stack에 쌓을 수 있다.
+    3. navigation.goBack() : stack의 이전 값으로 이동한다. 다른 navigator에서도 사용가능하다
+    4. navigation.pop() : stack의 이전 값으로 이동한다. stacknavigator에서만 사용 가능하다.
+    5. navigation.replace("~~~~~~") : stack의 위에 쌓는 것이 아니라 route자체를 replace하여준다.
