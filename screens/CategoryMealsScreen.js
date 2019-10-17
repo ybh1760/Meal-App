@@ -1,5 +1,5 @@
 import React from "react";
-import { StyleSheet, Text, View, FlatList } from "react-native";
+import { StyleSheet, View, FlatList } from "react-native";
 
 import { CATEGORIES, MEALS } from "../data/dummy-data";
 import MealItem from "../components/molecules/MealItem";
@@ -10,6 +10,7 @@ const CategoryMealsScreen = props => {
   const displayMeals = MEALS.filter(
     meal => meal.categoryIds.indexOf(catId) >= 0
   );
+
   const renderMealItem = itemData => {
     return (
       <MealItem
@@ -18,6 +19,12 @@ const CategoryMealsScreen = props => {
         duration={itemData.item.duration}
         complexity={itemData.item.complexity}
         affordability={itemData.item.affordability}
+        onSelect={() => {
+          props.navigation.navigate({
+            routeName: "MealDetail",
+            params: { mealId: itemData.item.id }
+          });
+        }}
       />
     );
   };

@@ -8,10 +8,10 @@ import {
 } from "react-native";
 
 const MealItem = props => {
-  const { title, duration, complexity, affordability, image } = props;
+  const { title, duration, complexity, affordability, image, onSelect } = props;
   return (
     <View style={styles.mealContainer}>
-      <TouchableOpacity onPress={() => {}}>
+      <TouchableOpacity onPress={onSelect}>
         <View style={{ ...styles.mealRow, ...styles.header }}>
           <ImageBackground style={styles.backImg} source={{ uri: image }}>
             <View style={styles.titleContainer}>

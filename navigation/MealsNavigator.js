@@ -14,6 +14,7 @@ const MealsNavigator = createStackNavigator(
     MealDetail: MealDetailScreen
   },
   {
+    // initialRouteName:"Categories", default로 첫번째 라우트를 홈으로 생각한다. 굳이 안적어도 된다.
     defaultNavigationOptions: {
       headerStyle: {
         backgroundColor: Platform.OS === "android" ? Colors.primary : "white"

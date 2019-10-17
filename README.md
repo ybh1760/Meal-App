@@ -30,3 +30,8 @@
 - navigate메소드로 params 보내기
   1. navigate({routeName:"~~~~", params:{"paramName" : }}) navigate의 인자로 객체를 넘길때 params를 설정 할수 있다.
   2. 전달 받은 스크린에서는 props.navigation.getParam("paramName") 을 통해서 값을 얻을 수 있다.
+
+- navigation Header에 아이콘 추가하는 방법
+1. navigationOptions의 headerRight의 값을 JSX문법으로 아이콘을 주면 된다.
+2. 전부다 하드코딩하기에는 힘드므로 "react-navigation-header-buttons"라이브러리를 이용하면 간단하게 할 수있다.(https://github.com/vonovak/react-navigation-header-buttons)
+3. 아이콘은 "@expo/vector-icons"라이브러리의  Ionicons를 사용하면 간단하다.
