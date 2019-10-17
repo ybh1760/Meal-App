@@ -35,3 +35,8 @@
 1. navigationOptions의 headerRight의 값을 JSX문법으로 아이콘을 주면 된다.
 2. 전부다 하드코딩하기에는 힘드므로 "react-navigation-header-buttons"라이브러리를 이용하면 간단하게 할 수있다.(https://github.com/vonovak/react-navigation-header-buttons)
 3. 아이콘은 "@expo/vector-icons"라이브러리의  Ionicons를 사용하면 간단하다.
+
+### BottomTabNavigator 사용하기
+
+1. createBottomTabNavigator({})로 생성하며, stackNavigator를 컴포넌트로 줄 수있다. 
+2. stackNavigator를 컴포넌트로 줄 경우에는 createAppContainer()의 인자로 BottomTabNavigator주면  stackNavigator도 같이 사용 가능하다.
