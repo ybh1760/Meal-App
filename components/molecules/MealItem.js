@@ -38,7 +38,8 @@ const styles = StyleSheet.create({
     height: 200,
     borderRadius: 10,
     overflow: "hidden",
-    alignSelf: "center"
+    alignSelf: "center",
+    marginVertical: 10
   },
   backImg: { width: "100%", height: "100%", justifyContent: "flex-end" },
   mealRow: {
