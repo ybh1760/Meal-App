@@ -84,8 +84,21 @@ const MealsFavTabNavigator =
         }
       });
 
-const MainNavigator = createDrawerNavigator({
-  MealFav: MealsFavTabNavigator,
-  Filters: FiltersNavigator
-});
+const MainNavigator = createDrawerNavigator(
+  {
+    MealFav: {
+      screen: MealsFavTabNavigator,
+      navigationOptions: { drawerLabel: "Meals" }
+    },
+    Filters: FiltersNavigator
+  },
+  {
+    contentOptions: {
+      activeTintColor: Colors.accent,
+      labelStyle: {
+        fontFamily: "open-sans"
+      }
+    }
+  }
+);
 export default createAppContainer(MainNavigator);

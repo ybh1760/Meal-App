@@ -4,8 +4,8 @@ import { AppLoading } from "expo";
 
 import MealsNavigator from "./navigation/MealsNavigator";
 
-const fetchFont = () => {
-  Font.loadAsync({
+const fetchFont = async () => {
+  await Font.loadAsync({
     "open-sans": require("./assets/fonts/OpenSans-Regular.ttf"),
     "open-sans-bold": require("./assets/fonts/OpenSans-Bold.ttf")
   });
@@ -19,6 +19,5 @@ export default function App() {
       <AppLoading startAsync={fetchFont} onFinish={() => setFontLoaded(true)} />
     );
   }
-
   return <MealsNavigator />;
 }
