@@ -1,10 +1,10 @@
 import React from "react";
+import { Platform, Text } from "react-native";
 import { createAppContainer } from "react-navigation";
 import { createBottomTabNavigator } from "react-navigation-tabs";
 import { createStackNavigator } from "react-navigation-stack";
 import { createMaterialBottomTabNavigator } from "react-navigation-material-bottom-tabs";
 import { createDrawerNavigator } from "react-navigation-drawer";
-import { Platform } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 
 import CategoriesScreen from "../screens/CategoriesScreen";
@@ -18,6 +18,8 @@ const defaultNavOptions = {
   headerStyle: {
     backgroundColor: Platform.OS === "android" ? Colors.primary : "white"
   },
+  headerTitleStyle: { fontFamily: "open-sans-bold" },
+  headerBackTitleStyle: { fontFamily: "open-sans" },
   headerTintColor: Platform.OS === "android" ? "white" : Colors.primary
 };
 
@@ -58,7 +60,10 @@ const tabScreenConfig = {
           <Ionicons name="ios-restaurant" size={25} color={tabinfo.tintColor} />
         );
       },
-      tabBarColor: Colors.primary
+      tabBarColor: Colors.primary,
+      tabBarLabel: Platform.OS === "android" && (
+        <Text style={{ fontFamily: "open-sans-bold" }}>Meals</Text>
+      )
     }
   },
   Favorites: {
@@ -67,7 +72,10 @@ const tabScreenConfig = {
       tabBarIcon: tabinfo => {
         return <Ionicons name="ios-star" size={25} color={tabinfo.tintColor} />;
       },
-      tabBarColor: Colors.accent
+      tabBarColor: Colors.accent,
+      tabBarLabel: Platform.OS === "android" && (
+        <Text style={{ fontFamily: "open-sans-bold" }}>Favorites</Text>
+      )
     }
   }
 };
@@ -80,7 +88,8 @@ const MealsFavTabNavigator =
       })
     : createBottomTabNavigator(tabScreenConfig, {
         tabBarOptions: {
-          activeTintColor: Colors.accent
+          activeTintColor: Colors.accent,
+          labelStyle: { fontFamily: "open-sans" }
         }
       });
 
@@ -88,7 +97,7 @@ const MainNavigator = createDrawerNavigator(
   {
     MealFav: {
       screen: MealsFavTabNavigator,
-      navigationOptions: { drawerLabel: "Meals" }
+      navigationOptions: { drawerLabel: "Meal" }
     },
     Filters: FiltersNavigator
   },

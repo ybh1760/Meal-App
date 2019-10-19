@@ -7,6 +7,8 @@ import {
   ImageBackground
 } from "react-native";
 
+import DefaultText from "../atoms/DefaultText";
+
 const MealItem = props => {
   const { title, duration, complexity, affordability, image, onSelect } = props;
   return (
@@ -22,9 +24,9 @@ const MealItem = props => {
           </ImageBackground>
         </View>
         <View style={{ ...styles.mealRow, ...styles.detail }}>
-          <Text>{duration}m</Text>
-          <Text>{complexity.toUpperCase()}</Text>
-          <Text>{affordability.toUpperCase()}</Text>
+          <DefaultText>{duration}m</DefaultText>
+          <DefaultText>{complexity.toUpperCase()}</DefaultText>
+          <DefaultText>{affordability.toUpperCase()}</DefaultText>
         </View>
       </TouchableOpacity>
     </View>
