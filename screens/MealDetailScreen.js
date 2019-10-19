@@ -1,8 +1,16 @@
 import React from "react";
-import { StyleSheet, Text, View, Button } from "react-native";
+import {
+  StyleSheet,
+  Text,
+  View,
+  Button,
+  Image,
+  ScrollView
+} from "react-native";
 import { HeaderButtons, Item } from "react-navigation-header-buttons";
 
 import { MEALS } from "../data/dummy-data";
+import DefaultText from "../components/atoms/DefaultText";
 import HeaderButton from "../components/atoms/HeaderButton";
 
 const MealDetailScreen = props => {
@@ -11,16 +19,14 @@ const MealDetailScreen = props => {
   const meal = MEALS.find(meal => meal.id === mealId);
 
   return (
-    <View style={styles.screen}>
-      <Text>MealDetailScreen</Text>
-      <Text>{meal.title}</Text>
-      <Button
-        title="Go to Main"
-        onPress={() => {
-          props.navigation.popToTop();
-        }}
-      />
-    </View>
+    <ScrollView>
+      <Image source={{ uri: meal.imageUrl }} style={styles.image} />
+      <View style={styles.detail}>
+        <DefaultText>{meal.duration}m</DefaultText>
+        <DefaultText>{meal.complexity.toUpperCase()}</DefaultText>
+        <DefaultText>{meal.affordability.toUpperCase()}</DefaultText>
+      </View>
+    </ScrollView>
   );
 };
 
@@ -40,11 +46,15 @@ MealDetailScreen.navigationOptions = navigationData => {
 };
 
 const styles = StyleSheet.create({
-  screen: {
-    flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center"
+  image: {
+    width: "100%",
+    height: 200
+  },
+  detail: {
+    flexDirection: "row",
+    padding: 10,
+    marginVertical: 10,
+    justifyContent: "space-around"
   }
 });
 
