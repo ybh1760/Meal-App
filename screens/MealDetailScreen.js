@@ -12,7 +12,7 @@ import { HeaderButtons, Item } from "react-navigation-header-buttons";
 import { MEALS } from "../data/dummy-data";
 import DefaultText from "../components/atoms/DefaultText";
 import HeaderButton from "../components/atoms/HeaderButton";
-import ListItem from "../components/atoms/ListItem";
+import ListItem from "../components/molecules/ListItem";
 
 const MealDetailScreen = props => {
   const mealId = props.navigation.getParam("mealId");

@@ -1,7 +1,7 @@
 import React from "react";
 import { StyleSheet, View } from "react-native";
 
-import DefaultText from "./DefaultText";
+import DefaultText from "../atoms/DefaultText";
 const ListItem = props => {
   return (
     <View style={styles.listItem}>
