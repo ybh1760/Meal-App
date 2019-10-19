@@ -12,6 +12,7 @@ import { HeaderButtons, Item } from "react-navigation-header-buttons";
 import { MEALS } from "../data/dummy-data";
 import DefaultText from "../components/atoms/DefaultText";
 import HeaderButton from "../components/atoms/HeaderButton";
+import ListItem from "../components/atoms/ListItem";
 
 const MealDetailScreen = props => {
   const mealId = props.navigation.getParam("mealId");
@@ -19,14 +20,25 @@ const MealDetailScreen = props => {
   const meal = MEALS.find(meal => meal.id === mealId);
 
   return (
-    <ScrollView>
-      <Image source={{ uri: meal.imageUrl }} style={styles.image} />
-      <View style={styles.detail}>
-        <DefaultText>{meal.duration}m</DefaultText>
-        <DefaultText>{meal.complexity.toUpperCase()}</DefaultText>
-        <DefaultText>{meal.affordability.toUpperCase()}</DefaultText>
-      </View>
-    </ScrollView>
+    <View style={{ flex: 1 }}>
+      <ScrollView>
+        <Image source={{ uri: meal.imageUrl }} style={styles.image} />
+        <View style={styles.detail}>
+          <DefaultText>{meal.duration}m</DefaultText>
+          <DefaultText>{meal.complexity.toUpperCase()}</DefaultText>
+          <DefaultText>{meal.affordability.toUpperCase()}</DefaultText>
+        </View>
+        <Text style={styles.title}>Ingredients</Text>
+        {meal.ingredients.map(ingredient => (
+          <ListItem key={ingredient}>{ingredient}</ListItem>
+        ))}
+
+        <Text style={styles.title}>Steps</Text>
+        {meal.steps.map(step => (
+          <ListItem key={step}>{step}</ListItem>
+        ))}
+      </ScrollView>
+    </View>
   );
 };
 
@@ -55,6 +67,11 @@ const styles = StyleSheet.create({
     padding: 10,
     marginVertical: 10,
     justifyContent: "space-around"
+  },
+  title: {
+    fontFamily: "open-sans-bold",
+    fontSize: 22,
+    textAlign: "center"
   }
 });
 
