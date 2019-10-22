@@ -1,23 +1,16 @@
 import React from "react";
-import {
-  StyleSheet,
-  Text,
-  View,
-  Button,
-  Image,
-  ScrollView
-} from "react-native";
+import { StyleSheet, Text, View, Image, ScrollView } from "react-native";
 import { HeaderButtons, Item } from "react-navigation-header-buttons";
+import { useSelector } from "react-redux";
 
-import { MEALS } from "../data/dummy-data";
 import DefaultText from "../components/atoms/DefaultText";
 import HeaderButton from "../components/atoms/HeaderButton";
 import ListItem from "../components/molecules/ListItem";
 
 const MealDetailScreen = props => {
   const mealId = props.navigation.getParam("mealId");
-
-  const meal = MEALS.find(meal => meal.id === mealId);
+  const availableMeals = useSelector(state => state.meals.meals);
+  const meal = availableMeals.find(meal => meal.id === mealId);
 
   return (
     <View style={{ flex: 1 }}>
@@ -43,12 +36,10 @@ const MealDetailScreen = props => {
 };
 
 MealDetailScreen.navigationOptions = navigationData => {
-  const mealId = navigationData.navigation.getParam("mealId");
-
-  const meal = MEALS.find(meal => meal.id === mealId);
+  const title = navigationData.navigation.getParam("title");
 
   return {
-    headerTitle: meal.title,
+    headerTitle: title,
     headerRight: (
       <HeaderButtons HeaderButtonComponent={HeaderButton}>
         <Item title="favorite" iconName="ios-star" onPress={() => {}} />
