@@ -11,7 +11,10 @@ import ListItem from "../components/molecules/ListItem";
 const MealDetailScreen = props => {
   const mealId = props.navigation.getParam("mealId");
   const availableMeals = useSelector(state => state.meals.meals);
-  const meal = availableMeals.find(meal => meal.id === mealId);
+  const selectedMeal = availableMeals.find(meal => meal.id === mealId);
+  const isFavMeal = useSelector(state =>
+    state.meals.favoriteMeals.some(meal => meal.id === mealId)
+  );
   const dispatch = useDispatch();
 
   const toggleFavoriteHandler = useCallback(() => {
@@ -24,22 +27,27 @@ const MealDetailScreen = props => {
     });
   }, [toggleFavoriteHandler]);
 
+  useEffect(() => {
+    props.navigation.setParams({
+      isFav: isFavMeal
+    });
+  }, [isFavMeal]);
   return (
     <View style={{ flex: 1 }}>
       <ScrollView>
         <Image source={{ uri: meal.imageUrl }} style={styles.image} />
         <View style={styles.detail}>
-          <DefaultText>{meal.duration}m</DefaultText>
-          <DefaultText>{meal.complexity.toUpperCase()}</DefaultText>
-          <DefaultText>{meal.affordability.toUpperCase()}</DefaultText>
+          <DefaultText>{selectedMeal.duration}m</DefaultText>
+          <DefaultText>{selectedMeal.complexity.toUpperCase()}</DefaultText>
+          <DefaultText>{selectedMeal.affordability.toUpperCase()}</DefaultText>
         </View>
         <Text style={styles.title}>Ingredients</Text>
-        {meal.ingredients.map(ingredient => (
+        {selectedMeal.ingredients.map(ingredient => (
           <ListItem key={ingredient}>{ingredient}</ListItem>
         ))}
 
         <Text style={styles.title}>Steps</Text>
-        {meal.steps.map(step => (
+        {selectedMeal.steps.map(step => (
           <ListItem key={step}>{step}</ListItem>
         ))}
       </ScrollView>
@@ -50,16 +58,16 @@ const MealDetailScreen = props => {
 MealDetailScreen.navigationOptions = navigationData => {
   const title = navigationData.navigation.getParam("title");
   const toggleFavorite = navigationData.navigation.getParam("toggleFav");
+  const isFavorite = navigationData.navigation.getParam("isFav");
+
   return {
     headerTitle: title,
     headerRight: (
       <HeaderButtons HeaderButtonComponent={HeaderButton}>
         <Item
           title="favorite"
-          iconName="ios-star"
-          onPress={() => {
-            toggleFavorite();
-          }}
+          iconName={isFavorite ? "ios-star" : "ios-star-outline"}
+          onPress={toggleFavorite}
         />
       </HeaderButtons>
     )
