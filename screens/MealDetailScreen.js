@@ -35,7 +35,7 @@ const MealDetailScreen = props => {
   return (
     <View style={{ flex: 1 }}>
       <ScrollView>
-        <Image source={{ uri: meal.imageUrl }} style={styles.image} />
+        <Image source={{ uri: selectedMeal.imageUrl }} style={styles.image} />
         <View style={styles.detail}>
           <DefaultText>{selectedMeal.duration}m</DefaultText>
           <DefaultText>{selectedMeal.complexity.toUpperCase()}</DefaultText>
